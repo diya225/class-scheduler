@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>education software</title>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"></link> -->
+        <!-- Favicon-->
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="http://127.0.0.1:5000/static/css/styles.css" rel="stylesheet" />
+        <style>
+            #Box1, #Box2, #Box3, #Box4, #Box5, #Box6{
+                padding: 25px;
+                background-color: white;
+                /* height: 60vh; */
+                display: none;
+            }
+            #Box1.active, #Box2.active, #Box3.active, #Box4.active, #Box5.active, #Box6.active{
+                display: block;
+            }
+            #content{
+                margin-top: 100px;
+            }
+            body{
+                background-color: aliceblue;
+            }
+ 
+            .container1{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            input[type="radio"]{
+                display: none;
+            }
+
+            label{
+                display: block;
+                cursor: pointer;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+
+            label span{
+                display: inline-flex;
+                align-items: center;
+                padding: 10px 20px 10px 10px;
+                border-radius: 31px;
+                transition: .25s ease;
+            }
+
+            label span:hover,
+            input[type="radio"]:checked + span{
+                background-color: #d6d6e5;
+            }
+
+            label span:before{
+                content: "";
+                background-color: #fff;
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                margin-right: 10px;
+                transition: .25s ease;
+                box-shadow:  inset 0 0 0 1px #00005c;
+            }
+
+            input[type="radio"]:checked + span:before{
+                box-shadow: inset 0 0 0 5px #00005c;
+            }
+
+            #buttons{
+                margin: 25px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            #buttons1{
+                margin: 25px;
+                display: flex;
+                justify-content: flex-end;
+            }
+        </style>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <!-- <li class="nav-item"><a class="nav-link" href="#page-top">AUTISM</a></li> -->
+                <a class="navbar-brand h1" href="#page-top">EDUCATION SOFTWARE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/">Update</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/View">View</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container" id="content">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <form action="/schedule" method="post">
+                    <div id="Box1" class="active">
+                        <center>Answer the following questions and a class will be scheduled for your based on your responses</center>
+                        <br>
+                            <label for="">Teacher name</label>
+                            <input required type="text" class="form-control" name="t_name" placeholder="Enter teacher name" />
+                            <br>
+                            <label for="">Classroom name</label>
+                            <input required type="text" class="form-control" name="c_name" placeholder="Enter classroom name" />
+                            <br>
+                            <label for="">Classroom password</label>
+                            <input required type="text" class="form-control" name="password" placeholder="Enter password" />
+                            <br>
+                            <div id="buttons1">
+                                <input type="button" id="next" data-value="#Box2" value="next" class="btn btn-info"/>
+                            </div>
+                    </div>
+                    <div id="Box2">
+                        <center>Choose class group of students you would like to teach</center>
+                        <br>
+                        <div class="container1">
+                                <label>
+                                    <input required type="radio" value="4" name="num"  checked/>
+                                    <span>4 Students</span>
+                                </label>
+                                <label>
+                                    <input required type="radio" value="6" name="num" />
+                                    <span>6 Students</span>
+                                </label>
+                                <label>
+                                    <input required type="radio" value="8" name="num"/>
+                                    <span>8 Students</span>
+                                </label>
+                        </div>
+                        <div id="buttons">
+                            <input type="button" id="prev" data-value="#Box1" value="previous" class="btn btn-info"/>
+                            <input type="button" id="next" value="next" data-value="#Box3" class="btn btn-info"/>
+                        </div>
+                    </div>
+                    <div id="Box3">
+                        <center>Choose prefered duration of class</center>
+                        <br>
+                        <div class="container1">
+                                <label>
+                                    <input required type="radio" value="1" name="time" checked />
+                                    <span>1 Hour</span>
+                                </label>
+                                <label>
+                                    <input required type="radio" value="2" name="time"/>
+                                    <span>2 Hour</span>
+                                </label>
+                                <label>
+                                    <input required type="radio" value="3" name="time"/>
+                                    <span>3 Hour</span>
+                                </label>
+                        </div>
+                        <div id="buttons">
+                            <input type="button" id="prev" data-value="#Box2" value="previous" class="btn btn-info"/>
+                            <input type="button" id="next" value="next" data-value="#Box4" class="btn btn-info"/>
+                        </div>
+                    </div>
+                    <div id="Box4">
+                        <center>Choose subject of expertise</center>
+                        <br>
+                        <div class="container1">
+                                <label>
+                                    <input required type="radio" value="Physics" name="sub" checked/>
+                                    <span>Physics</span>
+                                </label>
+                                <label>
+                                    <input required type="radio" value="Chemistry" name="sub"/>
+                                    <span>Chemistry</span>
+                                </label>
+                                <label>
+                                    <input required type="radio" value="Mathematics" name="sub"/>
+                                    <span>Mathematics</span>
+                                </label>
+                        </div>
+                        <div id="buttons">
+                            <input type="button" id="prev" data-value="#Box3" value="previous" class="btn btn-info"/>
+                            <input type="button" id="next" value="next" data-value="#Box5" class="btn btn-info"/>
+                        </div>
+                    </div>
+                    <div id="Box5">
+                        <center>Enter date of class</center>
+                        <br>
+                        <label for="">Date of class</label>
+                        <input required type="date" class="form-control" name="Date"/>
+                        <br>
+                            <div id="buttons">
+                                <input type="button" id="prev" data-value="#Box4" value="previous" class="btn btn-info"/>
+                                <input type="button" id="next" value="next" data-value="#Box6" class="btn btn-info"/>
+                            </div>
+                    </div>
+                    <div id="Box6">
+                        <center>Choose the class group of students you would like to teach</center>
+                        <br>
+                            <label for="">The grades are</label>
+                            <select name="grade" class="form-control" required>
+                                <option value="">--Choose grade--</option>
+                                <option value="1">Garde-1</option>
+                                <option value="2">Garde-2</option>
+                                <option value="3">Garde-3</option>
+                                <option value="4">Garde-4</option>
+                                <option value="5">Garde-5</option>
+                                <option value="6">Garde-6</option>
+                                <option value="7">Garde-7</option>
+                                <option value="8">Garde-8</option>
+                                <option value="9">Garde-9</option>
+                                <option value="10">Garde-10</option>
+                                <option value="11">Garde-11</option>
+                                <option value="12">Garde-12</option>
+                            </select>
+                            <br>
+                            <div id="buttons">
+                            <input type="button" id="prev" data-value="#Box4" value="previous" class="btn btn-info"/>
+                            <input type="submit" value="Submit" class="btn btn-success">
+                            </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+
+        {% if msg %}
+            <script>
+                alert('{{msg}}')
+            </script>
+        {% endif %}
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="http://127.0.0.1:5000/static/js/scripts.js"></script>
+        
+    </body>
+</html>
